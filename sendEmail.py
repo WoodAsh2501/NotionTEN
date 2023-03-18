@@ -1,6 +1,6 @@
 import os
 # 导入时间处理库
-from datetime import datetime
+import datetime
 # 导入邮件发送库
 import yagmail
 # 导入数据获取函数以及变量
