@@ -1,0 +1,39 @@
+name: 'NotionTEN'
+
+on:
+  schedule:
+    - cron: '0 10,23 * * *'
+
+jobs:
+  NotionTEN:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set timezone
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: "Asia/Shanghai"
+
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+
+      - name: Install dependencies
+        run: pip install yagmail
+
+      - name: NotionTEN
+        run: python sendEmail.py
+env:
+  # 数据库相关
+  databaseId: ${{ secrets.databaseId }}
+  token: ${{ secrets.token }} 
+
+  # 邮件服务相关
+  sender: ${{ secrets.sender }} 
+  receiver: ${{ secrets.receiver }} 
+  SMTPserver: ${{ secrets.SMTPserver }} 
+  password: ${{ secrets.password }} 
+  port: ${{ secrets.port }} 
