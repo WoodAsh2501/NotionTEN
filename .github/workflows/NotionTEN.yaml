@@ -3,6 +3,7 @@ name: 'NotionTEN'
 on:
   schedule:
     - cron: '0 10,23 * * *'
+  push:
 
 jobs:
   NotionTEN:
