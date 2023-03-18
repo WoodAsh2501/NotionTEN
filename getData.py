@@ -25,7 +25,7 @@ def getData():
             date = i['properties']['日期']['date']['start']
         except TypeError:
             # 用空格进行补齐
-            date = ' ' * 8
+            date = ' ' * 10
 
         status = i['properties']['完成状态']['checkbox']
 
