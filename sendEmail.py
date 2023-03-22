@@ -6,13 +6,13 @@ import yagmail
 # 导入数据获取函数以及变量
 from getData import getData
 
-sender = os.environ['sender']
+sender = os.environ['SENDER']
 
-receiver = os.environ['receiver'] if os.environ['receiver'] else sender
+receiver = os.environ['RECEIVER'] if os.environ['RECEIVER'] else sender
 
-SMTPserver = os.environ['SMTPserver']
-password = os.environ['password']
-port = os.environ['port']
+SMTPserver = os.environ['SMTPSERVER']
+password = os.environ['PASSWORD']
+port = os.environ['PORT']
 
 # 获取当前八位日期
 date = datetime.date.today()
