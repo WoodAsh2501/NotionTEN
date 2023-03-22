@@ -7,7 +7,9 @@ import yagmail
 from getData import getData
 
 sender = os.environ['sender']
-receiver = os.environ['receiver']
+
+receiver = os.environ['receiver'] if os.environ['receiver'] else sender
+
 SMTPserver = os.environ['SMTPserver']
 password = os.environ['password']
 port = os.environ['port']

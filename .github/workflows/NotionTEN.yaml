@@ -15,7 +15,7 @@ jobs:
       - name: Setup timezone
         uses: szenius/set-timezone@v1.0
         with:
-          timezoneLinux: "Asia/Singapore"
+          timezoneLinux: "Asia/Shanghai"
           
       - name: Setup python
         uses: actions/setup-python@v4
@@ -28,13 +28,15 @@ jobs:
       - name: NotionTEN
         run: python sendEmail.py
 env:
-  # 数据库相关
-  databaseId: ${{ secrets.databaseId }}
-  token: ${{ secrets.token }} 
+  # Notion 相关
+  DATABASEID: ${{ secrets.DATABASEID }}
+  TOKEN: ${{ secrets.TOKEN }} 
+  NOTION_DATE: ${{ secrets.NOTION_DATE }} 
+  NOTION_STATUS: ${{ secrets.NOTION_STATUS }} 
 
   # 邮件服务相关
-  sender: ${{ secrets.sender }} 
-  receiver: ${{ secrets.receiver }} 
-  SMTPserver: ${{ secrets.SMTPserver }} 
-  password: ${{ secrets.password }} 
-  port: ${{ secrets.port }} 
+  SENDER: ${{ secrets.SENDER }} 
+  RECEIVER: ${{ secrets.RECEIVER }} 
+  SMTPSERVER: ${{ secrets.SMTPSERVER }} 
+  PASSWORD: ${{ secrets.PASSWORD }} 
+  PORT: ${{ secrets.PORT }} 

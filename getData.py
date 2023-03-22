@@ -1,9 +1,12 @@
 import requests, json, os
 
 def getData():
-    databaseId = os.environ['databaseId']
-    token = os.environ['token']
+    databaseId = os.environ['DATABASEID']
+    token = os.environ['TOKEN']
     
+    date0 = os.environ['NOTION_DATE'] if os.environ['NOTION_DATE'] else '日期'
+    status0 = os.environ['NOTION_STATUS'] if os.environ['NOTION_STATUS'] else '完成状态'
+
     url = f"https://api.notion.com/v1/databases/{databaseId}/query"
 
     payload = {"page_size": 100}
@@ -22,12 +25,12 @@ def getData():
     for i in items:
         # 获取事项、日期、状态
         try:
-            date = i['properties']['日期']['date']['start']
+            date = i['properties']['日期'][date0]['start']
         except TypeError:
             # 用空格进行补齐
             date = ' ' * 10
 
-        status = i['properties']['完成状态']['checkbox']
+        status = i['properties'][status0]['checkbox']
 
         # 判断有无设定事项标题
         if i['properties']['标题']['formula']['string']:
