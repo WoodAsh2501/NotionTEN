@@ -25,7 +25,7 @@ def getData():
     for i in items:
         # 获取事项、日期、状态
         try:
-            date = i['properties']['日期'][date0]['start']
+            date = i['properties'][date0]['date']['start']
         except TypeError:
             # 用空格进行补齐
             date = ' ' * 10
